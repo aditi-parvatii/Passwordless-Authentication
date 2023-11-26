@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+      }
+      button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        color: #333;
+      }
+
+      h2 {
+        font-size: 36px;
+        text-align: center;
+        color: #333;
+      }
+      
+      input[readonly] {
+            background-color: #eee;
+            cursor: not-allowed;
+        }
+
+
+      p {
+        font-size: 18px;
+        line-height: 1.5;
+        color: #555;
+        text-align: justify;
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome! You've Successfully Logged In</h1>
+      <p>
+        A passwordless login system with WebAuthn replaces traditional passwords
+        with biometric or device-based authentication, enhancing security by
+        allowing users to log in using fingerprint, facial recognition, or
+        hardware tokens.
+      </p>
+      <!-- Referenced SVG using <img> -->
+      <img src="/static/images/webauthn_img.svg" alt="Image Description" />
+    </div>
+    <div>
+      <h2> Encryption and Decryption </h2>
+    </div>
+    <div>
+            <h2>Encrypt</h2>
+            <textarea id="encrypt-input" placeholder="Enter plain text"></textarea>
+            <button id="encrypt-button">Encrypt</button>
+            <p id="encrypted-text"></p>
+    </div>   
+    <div>
+            <h2>Decrypt</h2>
+            <textarea id="decrypt-input" placeholder="Enter encrypted text"></textarea>
+            <button id="decrypt-button">Decrypt</button>
+            <p id="decrypted-text"></p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const encryptInput = document.getElementById('encrypt-input');
+    const encryptButton = document.getElementById('encrypt-button');
+    const encryptedText = document.getElementById('encrypted-text');
+
+    const decryptInput = document.getElementById('decrypt-input');
+    const decryptButton = document.getElementById('decrypt-button');
+    const decryptedText = document.getElementById('decrypted-text');
+
+    encryptButton.addEventListener('click', async () => {
+        const plainText = encryptInput.value;
+        const response = await fetch('/encrypt', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: plainText }) // Use 'data' key here
+        });
+        const data = await response.json();
+        encryptedText.textContent = `Encrypted: ${data.encrypted_data}`;
+    });
+
+    decryptButton.addEventListener('click', async () => {
+        const encryptedData = decryptInput.value;
+        const response = await fetch('/decrypt', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ encrypted_data: encryptedData }) // Use 'encrypted_data' key here
+        });
+        const data = await response.json();
+        decryptedText.textContent = `Decrypted: ${data.decrypted_data}`;
+    });
+});
+    </script>
+  </body>
+</html>

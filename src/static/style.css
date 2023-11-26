@@ -1,0 +1,130 @@
+/* Apply a modern and classy style to your CSS */
+
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif; /* Use a more common font */
+    background-color: #f5f5f5; /* Light gray background */
+    color: #333; /* Dark text color */
+    line-height: 1.6; /* Improved readability */
+  }
+  
+  .container {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    border-radius: 0.5rem; /* Rounded corners */
+  }
+  
+  h1,
+  h2,
+  h3 {
+    margin-bottom: 1rem; /* Add space below headings */
+    color: #0056b3; /* Darker blue heading color */
+  }
+  
+  #dbgRegister,
+  #dbgAuthenticate {
+    text-align: left;
+    font-size: 0.9rem;
+    padding: 1rem;
+    max-height: 15rem;
+    width: 100%;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    background-color: #f9f9f9; /* Light gray background */
+  }
+  
+  details {
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+  }
+  
+  p {
+    line-height: 1.6; /* Improved line height */
+  }
+  
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem; /* Increase top margin for spacing */
+  }
+  
+  .form-container input {
+    flex: 1;
+    height: 2.5rem; /* Slightly taller input fields */
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+  }
+  
+  .form-container h2 {
+    margin-top: 0;
+  }
+  
+  .form-container button {
+    background: #0056b3; /* Darker blue background color */
+    color: #fff; /* White text color */
+    width: auto;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-container button:hover {
+    background: #004183; /* Slightly darker blue on hover */
+  }
+  
+  .debug-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .debug-container section {
+    flex: 1;
+    max-width: 23.125rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    background-color: #f9f9f9; /* Light gray background */
+    overflow-y: auto;
+  }
+  
+  .form-container {
+    position: relative;
+  }
+  
+  #registrationMessage {
+    position: absolute;
+    bottom: -3.5rem; /* Adjusted for visibility */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90%;
+    padding: 0.5rem 1rem;
+    background-color: #0b3664; /* Blue background color */
+    color: #f9f9f9; /* White text color */
+    border-radius: 0.5rem; /* Rounded corners */
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 1; /* Visible by default */
+    transition: opacity 0.3s;
+    z-index: 1; /* Ensure it's above other elements */
+  }
+  
+  .debug-container {
+    z-index: 0; /* Ensure debug box is below the message */
+  }
